@@ -41,9 +41,9 @@ CORE_DIR="${CURRENT_DIR}/core"
 pushd ${CORE_DIR}
 if [[ -z $GITHUB_CI ]];
 then
-  mvn clean package -q -DskipTests
+  JAVA_HOME=/usr/lib/jvm/java-17-oracle/ mvn clean package -q -DskipTests
 else
-  mvn verify -q
+  JAVA_HOME=/usr/lib/jvm/java-17-oracle/ mvn verify -q
 fi
 popd # core dir
 
@@ -57,7 +57,7 @@ then
 fi
 
 pushd ${PYTHON_DIR}
-python setup.py bdist_wheel
+ipython3 setup.py bdist_wheel
 cp ${PYTHON_DIR}/dist/${RAYDP_PACKAGE_NAME}-* ${DIST_PATH}
 popd # python dir
 
