@@ -3,9 +3,9 @@ from ray import tune
 import ray.data
 from ray import train
 from ray.train import Trainer, TrainingCallback, get_dataset_shard
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
+import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpy
+import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpy.nn as nn
+import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpy.nn.functional as F
 
 import raydp
 from raydp.utils import random_split

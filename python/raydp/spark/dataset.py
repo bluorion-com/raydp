@@ -544,7 +544,7 @@ if HAS_MLDATASET:
     #         :return: a pytorch DataLoader
     #         """
     #         # pylint: disable=C0415
-    #         import torch
+    #         import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpy
     #         from raydp.torch.torch_ml_dataset import PrefetchedDataLoader, TorchMLDataset
 
     #         num_shards = ds.num_shards()

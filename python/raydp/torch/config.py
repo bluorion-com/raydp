@@ -31,7 +31,7 @@ def libs_import():
             # pylint: disable-all
             import oneccl_bindings_for_pytorch
         else:
-            import torch_ccl
+            import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpy_ccl
     except ImportError as ccl_not_exist:
         raise ImportError(
             "Please install torch-ccl"

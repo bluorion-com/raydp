@@ -58,6 +58,7 @@ fi
 
 pushd ${PYTHON_DIR}
 ipython3 setup.py bdist_wheel
+PYTHON_PATH=/home/gmi/.local/lib/python3.10/site-packages/site-packages/ python3 setup.py bdist_wheel
 cp ${PYTHON_DIR}/dist/${RAYDP_PACKAGE_NAME}-* ${DIST_PATH}
 popd # python dir
 

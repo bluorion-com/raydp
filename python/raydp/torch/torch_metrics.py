@@ -8,12 +8,12 @@ def try_import_torchmetrics():
     """
     try:
         # pylint: disable=import-outside-toplevel
-        import torchmetrics
+        import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpymetrics
 
         return torchmetrics
     except ImportError as torchmetrics_not_exist:
         raise ImportError(
-            "Could not import torchmetrics! Raydp TorchEstimator requires "
+            "Could not import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpymetrics! Raydp TorchEstimator requires "
             "you to install torchmetrics: "
             "`pip install torchmetrics`."
         ) from torchmetrics_not_exist

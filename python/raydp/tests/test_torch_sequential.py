@@ -17,7 +17,7 @@
 
 import pytest
 import sys
-import torch
+import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpy
 import raydp
 from raydp.torch import TorchEstimator
 

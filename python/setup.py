@@ -39,8 +39,10 @@ else:
 ROOT_DIR = os.path.dirname(__file__)
 
 TEMP_PATH = "deps"
-CORE_DIR = os.path.abspath("../core")
-BIN_DIR = os.path.abspath("../bin")
+# CORE_DIR = os.path.abspath(os.path.join(ROOT_DIR, "../core"))
+# BIN_DIR = os.path.abspath(os.path.join(ROOT_DIR, "../bin"))
+CORE_DIR = os.path.abspath(os.path.join(ROOT_DIR, "core"))
+BIN_DIR = os.path.abspath(os.path.join(ROOT_DIR, "bin"))
 
 JARS_PATH = glob.glob(os.path.join(CORE_DIR, f"**/target/raydp-*.jar"), recursive=True)
 JARS_TARGET = os.path.join(TEMP_PATH, "jars")
@@ -59,7 +61,14 @@ try:
     os.mkdir(JARS_TARGET)
     os.mkdir(SCRIPT_TARGET)
 except:
+<<<<<<< Updated upstream
     print(f"Temp path for symlink to parent already exists {TEMP_PATH}", file=sys.stderr)
+=======
+    print(
+        f"Temp path for symlink to parent already exists {os.path.abspath(TEMP_PATH)}",
+        file=sys.stderr,
+    )
+>>>>>>> Stashed changes
     sys.exit(-1)
 
 
@@ -106,6 +115,7 @@ try:
     ]
 
     _packages = find_packages()
+    _packages = ["raydp"]
     _packages.append("raydp.jars")
     _packages.append("raydp.bin")
 
@@ -119,15 +129,30 @@ try:
         keywords="raydp spark ray distributed data-processing",
         description="RayDP: Distributed Data Processing on Ray",
         long_description=io.open(
-            os.path.join(ROOT_DIR, os.path.pardir, "README.md"),
+            # os.path.join(ROOT_DIR, os.path.pardir, "README.md"),
+            os.path.join(ROOT_DIR, "README.md"),
             "r",
             encoding="utf-8").read(),
         long_description_content_type="text/markdown",
         packages=_packages,
         include_package_data=True,
+<<<<<<< Updated upstream
         package_dir={"raydp.jars": "deps/jars", "raydp.bin": "deps/bin",
                      "mpi_network_proto": "raydp/mpi/network"},
         package_data={"raydp.jars": ["*.jar"], "raydp.bin": ["raydp-submit"]},
+=======
+        package_dir={
+            "raydp.jars": "deps/jars",
+            "raydp.bin": "deps/bin",
+            "mpi_network_proto": "raydp/mpi/network",
+            "raydp": ".",
+        },
+        package_data={
+            "raydp.jars": ["*.jar"],
+            "raydp.bin": ["raydp-submit"],
+            "raydp": ["*.py"],
+        },
+>>>>>>> Stashed changes
         cmdclass={
             'build_proto_modules': CustomBuildPackageProtos,
         },
@@ -144,4 +169,3 @@ try:
 finally:
     rmtree(os.path.join(TEMP_PATH, "jars"))
     rmtree(os.path.join(TEMP_PATH, "bin"))
-    os.rmdir(TEMP_PATH)

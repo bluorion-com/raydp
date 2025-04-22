@@ -19,7 +19,7 @@ import pytest
 import os
 import sys
 import shutil
-import torch
+import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpy
 
 # https://spark.apache.org/docs/latest/api/python/migration_guide/koalas_to_pyspark.html
 # import databricks.koalas as ks

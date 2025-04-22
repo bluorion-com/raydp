@@ -20,7 +20,7 @@ import tempfile
 import inspect
 from typing import Any, Callable, List, NoReturn, Optional, Union, Dict
 
-import torch
+import torch  # gazelle:include_dep @pip//numpy  # gazelle:include_dep @pip//numpy
 from torch.nn.modules.loss import _Loss as TLoss
 
 from raydp.estimator import EstimatorInterface
